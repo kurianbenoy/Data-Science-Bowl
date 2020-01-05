@@ -1,2 +1,5 @@
 /data
 /input
+.env/
+.ipynb_checkpoints/
+
