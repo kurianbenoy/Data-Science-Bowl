@@ -33,7 +33,9 @@ def encode_title(train, test, train_labels):
 
 def read_data():
     print('Reading train.csv file....')
-    train = pd.read_csv('input/train.csv')
+    keep_cols = ['event_id', 'game_session', 'installation_id', 'event_count',
+             'event_code','title' ,'game_time', 'type', 'world',]
+    train = pd.read_csv('input/train.csv',usecols=keep_cols)
     print('Training.csv file have {} rows and {} columns'.format(train.shape[0], train.shape[1]))
 
     print('Reading test.csv file....')
@@ -41,7 +43,7 @@ def read_data():
     print('Test.csv file have {} rows and {} columns'.format(test.shape[0], test.shape[1]))
 
     print('Reading train_labels.csv file....')
-    train_labels = pd.read_csv('input/train_labels.csv')
+    train_labels = pd.read_csv('input/train_labels.csv',usecols=['installation_id','game_session','accuracy_group'])
     print('Train_labels.csv file have {} rows and {} columns'.format(train_labels.shape[0], train_labels.shape[1]))
 
 #    print('Reading specs.csv file....')
@@ -54,6 +56,6 @@ def read_data():
     return train, test, train_labels
 
 # read data
-train, test, train_labels, specs, sample_submission = read_data()
+train, test, train_labels = read_data()
 # get usefull dict with maping encode
-train, test, train_labels, win_code, list_of_user_activities, list_of_event_code, activities_labels, assess_titles, list_of_event_id, all_title_event_code = encode_title(train, test, train_labels)
+#train, test, train_labels, win_code, list_of_user_activities, list_of_event_code, activities_labels, assess_titles, list_of_event_id, all_title_event_code = encode_title(train, test, train_labels)
