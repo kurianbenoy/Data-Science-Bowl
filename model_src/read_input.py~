@@ -1,0 +1,13 @@
+import pandas as pd
+import time
+
+
+keep_cols = ['event_id', 'game_session', 'installation_id', 'event_count',
+             'event_code','title' ,'game_time', 'type', 'world','timestamp']
+train=pd.read_csv('../input/train.csv')
+train_labels=pd.read_csv('../input/train_labels.csv',
+                         usecols=['installation_id','game_session','accuracy_group'])
+test=pd.read_csv('../input/test.csv')
+
+
+print(train.head())
